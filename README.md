@@ -29,6 +29,12 @@ progress is saved locally in `localStorage` on the device you study from.
   ships a simple "more content coming soon" landing page with a couple of sample
   vocabulary cards, so the route/structure exists to expand later without reshaping the
   civics app.
+- **Interview Questions module** — separate from civics/English: personal "good moral
+  character" and eligibility questions the officer asks verbally during the N-400
+  interview (e.g. "have you ever been arrested, cited, or detained?", "do you support the
+  Constitution and form of government of the United States?"). These have no single
+  correct answer, so cards show guidance on what's really being asked (bilingual
+  EN/ES) instead of a graded score, with a simple "mark as ready" self-check.
 
 ## Tech stack
 
@@ -98,15 +104,18 @@ src/
     questions100.ts  # Official 2008 100-question list
     questions128.ts  # Official 2025 128-question list (includes the 65/20 subset flag)
     index.ts         # Data access helpers (getQuestionsForVersion, getQuestionById, labels)
+    interview.ts     # N-400 interview "good moral character"/eligibility question bank
   hooks/
     useProgress.ts   # localStorage-backed per-version/per-level progress tracking
     useQuiz.ts        # Generic quiz session state machine (shuffle, index, score, restart)
     fuzzyMatch.ts     # Lenient text-answer validation for Level 3
+    useInterviewProgress.ts # localStorage "marked as ready" tracking for interview prep
   components/
     Flashcard.tsx        # Level 0
     MultipleChoice.tsx    # Level 1
     Matching.tsx          # Level 2
     WriteAnswer.tsx       # Level 3
+    FlipCard.tsx          # Generic flip card, reused by English vocab + interview prep
   pages/
     Home.tsx           # Exam version picker
     VersionLevels.tsx  # Level picker + missed-questions review, per version
@@ -115,6 +124,7 @@ src/
     Level2.tsx
     Level3.tsx
     EnglishPractice.tsx # Separate, decoupled placeholder module
+    InterviewPractice.tsx # Separate interview-questions module (no scoring, bilingual guidance)
 ```
 
 Question content is fully decoupled from the UI components and typed through

@@ -29,6 +29,10 @@ export function Home() {
       <p className="breadcrumb">
         Also practicing English? <Link to="/english">Try English practice →</Link>
       </p>
+      <p className="breadcrumb">
+        The interview also asks personal questions.{" "}
+        <Link to="/interview">Practice interview questions →</Link>
+      </p>
     </div>
   );
 }

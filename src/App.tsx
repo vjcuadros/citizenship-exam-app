@@ -10,6 +10,7 @@ import { EnglishPractice } from "./pages/EnglishPractice";
 import { EnglishVocab } from "./pages/EnglishVocab";
 import { EnglishReading } from "./pages/EnglishReading";
 import { EnglishWriting } from "./pages/EnglishWriting";
+import { InterviewPractice } from "./pages/InterviewPractice";
 import { Profile } from "./pages/Profile";
 import { useTheme } from "./hooks/useTheme";
 import { useCivicsProfile } from "./hooks/useCivicsProfile";
@@ -32,6 +33,7 @@ function App() {
             Civics
           </NavLink>
           <NavLink to="/english">English</NavLink>
+          <NavLink to="/interview">Interview</NavLink>
           <NavLink to="/profile" className="app__nav-state">
             📍 {profile.state ?? "Set my state"}
           </NavLink>
@@ -58,6 +60,7 @@ function App() {
           <Route path="/english/vocab/:list" element={<EnglishVocab />} />
           <Route path="/english/reading" element={<EnglishReading />} />
           <Route path="/english/writing" element={<EnglishWriting />} />
+          <Route path="/interview" element={<InterviewPractice />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </main>
